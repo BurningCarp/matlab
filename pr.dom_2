@@ -1,5 +1,5 @@
 %pr_dom_2
-%zad1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% zad1
 x = linspace(-pi, pi, 500);
 
 y1 = sin(x);
@@ -17,7 +17,7 @@ title('Wykresy funkcji sin(x), cos(x), x \cdot sin(x) \cdot cos(x)');
 legend('sin(x)', 'cos(x)', 'x \cdot sin(x) \cdot cos(x)');
 grid on;
 hold off;
-%% zad2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% zad2
 alpha = 2 + (8 - 2) * rand;
 t1 = linspace(0, 8, 500);
 y1 = 1 - alpha * exp(-t1) .* sin(t1);
@@ -53,7 +53,7 @@ title('Wykres funkcji y(t) = 5 e^{-\gamma t} cos(0.9t - \pi/6) + \delta e^{-2t}'
 xlabel('t');
 ylabel('y(t)');
 grid on;
-%% zad3
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% zad3
 xy = [2, 3];
 
 alpha = mean(xy);
@@ -87,7 +87,7 @@ xlabel('x');
 ylabel('g(x)');
 grid on;
 hold off;
-%% zad4
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% zad4
 x = linspace(-pi, pi, 100);
 
 y1 = sin(x);
@@ -108,3 +108,4 @@ legend('sin(x)', 'sin(x - \pi/6)', 'sin(x - 2\pi/6)', 'Location', 'southwest');
 grid off;
 hold off;
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% zad5
