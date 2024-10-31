@@ -1,0 +1,10 @@
+%% zad_1_a
+A = rand(2,3);
+A = A(:)';
+disp('Macierz jako wektor wiersz. :'), disp(A)
+%% zad_1_b
+disp('Skrypt generuje losową macierz o wymiarach m x n')
+m = input('Podaj liczbę wierszy m: ');
+n = input('Podaj liczbę kolumn n: ');
+B = rand(m, n);
+disp('Macierz losowa m x n: '), disp(B);
