@@ -1,0 +1,38 @@
+%% zad_1 dla k=3
+a = 1;
+k = 3;
+phi0 = 0;
+phi = linspace(0, 2*pi, 1000);
+rho = a*cos(k*phi + phi0);
+figure;
+polarplot(phi,rho,'LineWidth',1.5);
+title('roza polarna dla k=3');
+%% zad_1 dla k=7
+a = 1;
+k = 7;
+phi0 = 0;
+phi = linspace(0, 2*pi, 1000);
+rho = a*cos(k*phi + phi0);
+figure;
+polarplot(phi,rho,'LineWidth',1.5);
+title('roza polarna dla k=7');
+
+%% zad_3
+sig_x = 1 + rand;
+sig_y = 1 + rand;
+x0 = 0;
+y0 = 0;
+
+x = linspace(-5, 5, 100);
+y = linspace(-5, 5, 100);
+[X, Y] = meshgrid(x, y);
+
+Z = (1 / (2 * pi * sig_x * sig_y)) * exp(-((X - x0).^2 / (2 * sig_x^2)) - ((Y - y0).^2 / (2 * sig_y^2)));
+
+figure;
+surf(X, Y, Z);
+shading interp;
+xlabel('x');
+ylabel('y');
+zlabel('z');
+colorbar;
