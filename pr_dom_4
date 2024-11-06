@@ -1,0 +1,46 @@
+%% zad1
+function wykres()
+    t = linspace(0, 2*pi, 1000);
+    x = cos(t) + cos(7*t)/2 + sin(17*t)/3;
+    y = sin(t) + sin(7*t)/2 + cos(17*t)/3;
+    
+    plot(x, y, 'b', 'LineWidth', 1.5);
+    xlabel('x');
+    ylabel('y');
+    title('Parametryczna krzywa');
+    grid on;
+end
+%%zad2
+function sfera(r)
+    theta = linspace(0, pi, 50);
+    phi = linspace(0, 2*pi, 50);
+    [Theta, Phi] = meshgrid(theta, phi);
+    X = r * sin(Theta) .* cos(Phi);
+    Y = r * sin(Theta) .* sin(Phi);
+    Z = r * cos(Theta);
+    C = cos(11*Phi) .* cos(7*Theta);
+    surf(X, Y, Z, C, 'EdgeColor', 'none');
+    colormap(jet);
+    colorbar;
+    xlabel('X');
+    ylabel('Y');
+    zlabel('Z');
+    title('Sfera parametryczna z kolorystyką');
+    axis equal;
+end
+%%zad 3
+function pole = wykres(a, b) % wyjres zdlatego ze zostalo tak po porzednim zadaniu
+    x0 = -5 + 10 * rand;
+    y0 = -5 + 10 * rand;
+    pole = pi * (b^2 - a^2);
+    fprintf('Współrzędne środka: x0 = %.2f, y0 = %.2f\n', x0, y0);
+    fprintf('Pole obszaru D dla a = %.2f i b = %.2f wynosi: %.2f\n', a, b, pole);
+end
+function pole = wykres(a, b)
+    x0 = -5 + 10 * rand;
+    y0 = -5 + 10 * rand;
+    pole = pi * (b^2 - a^2);
+    fprintf('Współrzędne środka: x0 = %.2f, y0 = %.2f\n', x0, y0);
+    fprintf('Pole obszaru D dla a = %.2f i b = %.2f wynosi: %.2f\n', a, b, pole);
+end
+
