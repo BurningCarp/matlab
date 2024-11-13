@@ -1,0 +1,18 @@
+zad 1 
+a = 2;
+phi = linspace(1, 100*pi, 1000);
+rho = a ./ phi;
+polarplot(phi, rho);
+title('spirala hiperboliczna');
+
+zad 2
+x = linspace(-5, 5, 1000);
+y = linspace(-5, 5, 1000);
+[X, Y] = meshgrid(x, y);
+
+f = (1 / (2 * pi)) * exp(-X.^2 - Y.^2);
+
+figure;
+mesh(X,Y,f);
+colormap(jet)
+colorbar;
