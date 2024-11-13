@@ -1,0 +1,27 @@
+zad 1 
+
+zad 2
+  function wynik = potega(x,n)
+if n ==0
+    wynik = 0;
+else
+wynik = 1;
+for i = 1:n
+    wynik = wynik * x;
+end
+end
+end
+
+zad 3 
+  function wynik = silnia(n) 
+    if n < 0
+        wynik = 0;
+    elseif n > 50
+        wynik = 0;
+    else
+        wynik = 1;
+        for i = 1:n
+            wynik = wynik * i;
+        end
+    end
+end
