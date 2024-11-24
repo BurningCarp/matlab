@@ -1,0 +1,53 @@
+numerycznie:
+t_span = [0, 10];
+N_0 = 100;
+r_wart = [0.5, 0, -0.5];
+colors = ['r', 'g', 'b'];
+
+figure;
+hold on;
+for i = 1:length(r_wart)
+    r = r_wart(i);
+    
+    y = @(t, N) r * N;
+    
+    [t, N] = ode45(y, t_span, N_0);
+    
+    plot(t, N, colors(i), 'LineWidth', 1.5);
+end
+
+legend('r = 0.5 (populacja rośnie)', ...
+       'r = 0 (populacja stała)', ...
+       'r = -0.5 (populacja maleje)');
+
+xlabel('Czas (t)');
+ylabel('Populacja (N)');
+title('Numeryczne rozwiązanie wzrostu populacji');
+grid on;
+hold off;
+
+analitycznie:
+t = linspace(0, 10, 100);
+N_0 = 100;
+r_wart = [0.5, 0, -0.5];
+colors = ['r', 'g', 'b'];
+
+figure;
+hold on;
+for i = 1:length(r_wart)
+    r = r_wart(i);
+    
+    N = N_0 * exp(r * t);
+
+    plot(t, N, colors(i), 'LineWidth', 1.5);
+end
+
+legend('r = 0.5 (populacja rośnie)', ...
+       'r = 0 (populacja stała)', ...
+       'r = -0.5 (populacja maleje)');
+
+xlabel('Czas (t)');
+ylabel('Populacja (N)');
+title('Analityczne rozwiązanie wzrostu populacji');
+grid on;
+hold off;
