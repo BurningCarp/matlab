@@ -1,0 +1,53 @@
+function zadanie1(f)
+    while true
+        n = input('Podaj liczbę naturalną n: ');
+        if czy_nat(n) == 1
+            break;
+        else
+            disp('Podana liczba nie jest naturalna.');
+        end
+    end
+
+    syms x;
+    x_wart = linspace(-2*pi, 2*pi, 1000);
+    f_func = matlabFunction(f);
+
+    y_wart = f_func(x_wart);
+
+    figure; hold on;
+    plot(x_wart, y_wart, 'DisplayName', 'f(x)');
+
+    for k = 1:n
+        f_poch = diff(f, x, k);
+        f_poch_func = matlabFunction(f_poch);
+        y_wart_poch = f_poch_func(x_wart);
+
+        plot(x_wart, y_wart_poch, 'DisplayName', sprintf('f^{(%d)}(x)', k));
+    end
+
+    legend('show');
+    xlabel('x');
+    ylabel('y');
+    title('Wykres funkcji f i jej pochodnych');
+    grid on;
+    hold off;
+end
+
+function lnat = czy_nat(n)
+    lnat = 0;
+
+    if n > 0
+        zaok = n;
+        while zaok >= 1
+            zaok = zaok - 1;
+        end
+        if zaok == 0
+            lnat = 1;
+        end
+    end
+    if lnat == 1
+        fprintf('jest nat');
+    else
+        fprintf('nie jest nat');
+    end
+end
