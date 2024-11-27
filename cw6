@@ -25,3 +25,96 @@ zad 3
         end
     end
 end
+
+zad 3 
+
+function silnia = silnia_n(n)
+    % Informacje o programie
+    disp('Funkcja oblicza silnię liczby naturalnej n (0 <= n <= 50).');
+
+    % Sprawdzanie warunków
+    if ~isnumeric(n) || n < 0 || n > 50 || fix(n) ~= n
+        error('Podana liczba musi być liczbą naturalną z zakresu 0 <= n <= 50.');
+    end
+
+    % Obliczanie silni
+    silnia = 1;
+    for i = 1:n
+        silnia = silnia * i;
+    end
+end
+
+zad4
+
+function sprawdz_liczbe(x)
+    % Sprawdzenie liczby
+    if fix(x) == x
+        disp('Liczba jest całkowita.');
+    else
+        disp('Liczba jest niecałkowita.');
+    end
+end
+
+
+zad5
+
+function silnia = rozszerzona_silnia_n(n)
+    % Sprawdzenie, czy liczba jest całkowita
+    sprawdz_liczbe(n);
+
+    % Sprawdzanie warunków dla silni
+    if ~isnumeric(n) || n < 0 || n > 50 || fix(n) ~= n
+        error('Podana liczba musi być liczbą naturalną z zakresu 0 <= n <= 50.');
+    end
+
+    % Obliczanie silni
+    silnia = 1;
+    for i = 1:n
+        silnia = silnia * i;
+    end
+end
+
+
+zad6
+
+function rysuj_okregi(r, n)
+    % Informacja o funkcji
+    disp('Funkcja rysuje okręgi o promieniach od r do r+n-1.');
+
+    % Sprawdzenie poprawności argumentów
+    if ~isnumeric(r) || ~isnumeric(n) || r <= 0 || n <= 0 || fix(n) ~= n
+        error('Argumenty r i n muszą być dodatnie, a n musi być liczbą całkowitą.');
+    end
+
+    % Rysowanie okręgów
+    figure; hold on; axis equal;
+    theta = linspace(0, 2*pi, 100);  % Wartości kątowe dla okręgu
+
+    for i = 0:(n-1)
+        promien = r + i;
+        x = promien * cos(theta);
+        y = promien * sin(theta);
+        plot(x, y, 'DisplayName', sprintf('Promień = %d', promien));
+    end
+
+    legend('show');
+    title('Wykres okręgów');
+    xlabel('x'); ylabel('y');
+    grid on;
+    hold off;
+end
+
+zad7
+
+% Wczytywanie macierzy od użytkownika
+macierz = zeros(3, 4);  % Tworzenie macierzy 3x4
+
+disp('Podaj wartości dla macierzy 3x4:');
+for i = 1:3
+    for j = 1:4
+        macierz(i, j) = input(sprintf('Podaj element (%d, %d): ', i, j));
+    end
+end
+
+disp('Podana macierz:');
+disp(macierz);
