@@ -1,0 +1,129 @@
+zad 1 
+
+% Symboliczne obliczenie kwadratu macierzy i wyznacznika
+syms a b c d e f g h i;
+A = [a, b, c; d, e, f; g, h, i];
+
+% Kwadrat macierzy
+A_squared = A * A;
+
+% Wyznacznik macierzy
+determinant_A = det(A);
+
+disp('Kwadrat macierzy A:');
+disp(A_squared);
+disp('Wyznacznik macierzy A:');
+disp(determinant_A);
+
+zad2
+
+% Symboliczne rozwiązanie równania trzeciego stopnia
+syms x;
+eq = x^3 + k*x^2 + c*x + d == 0;
+
+% Rozwiązanie symboliczne
+roots_eq = solve(eq, x);
+
+disp('Rozwiązania równania trzeciego stopnia:');
+disp(roots_eq);
+
+% Podstawienie wartości przykładowych
+k_val = 1;
+c_val = -6;
+d_val = 8;
+roots_numeric = double(subs(roots_eq, [k, c, d], [k_val, c_val, d_val]));
+
+disp('Rozwiązania numeryczne dla k=1, c=-6, d=8:');
+disp(roots_numeric);
+
+
+zad3
+
+% Symboliczne obliczanie pochodnych cząstkowych
+syms x y;
+f = y * exp(x) + (x^4);
+
+% Pochodne pierwszego rzędu
+df_dx = diff(f, x);
+df_dy = diff(f, y);
+
+% Pochodne drugiego rzędu
+d2f_dx2 = diff(df_dx, x);
+d2f_dy2 = diff(df_dy, y);
+
+disp('Pochodna cząstkowa df/dx:');
+disp(df_dx);
+disp('Pochodna cząstkowa df/dy:');
+disp(df_dy);
+
+disp('Pochodna cząstkowa drugiego rzędu d^2f/dx^2:');
+disp(d2f_dx2);
+disp('Pochodna cząstkowa drugiego rzędu d^2f/dy^2:');
+disp(d2f_dy2);
+
+
+zad4
+
+% (a) Całka nieoznaczona
+syms x;
+integral_1 = int(2 * sin(x)^2, x);
+disp('Całka nieoznaczona ∫2sin^2(x)dx:');
+disp(integral_1);
+
+% (b) Całka oznaczona
+syms y;
+integral_2 = int(1 / (1 + y^2), y, 0, 1);
+disp('Całka oznaczona ∫(1/(1+y^2))dy od 0 do 1:');
+disp(integral_2);
+
+zad5
+
+% Symboliczne obliczanie granic
+syms x;
+limit_1 = limit((sin(4*x)) / (x), x, 0);
+limit_2 = limit((x^2 + x - 1) / (2*x^2 - x + 3), x, inf);
+
+disp('Granica lim (sin(4x)/x) dla x → 0:');
+disp(limit_1);
+
+disp('Granica lim ((x^2 + x - 1) / (2x^2 - x + 3)) dla x → ∞:');
+disp(limit_2);
+
+zad6
+
+% Szereg Taylora
+syms x;
+f = exp(x);
+
+% Punkt środkowy x0=1, stopień n=7
+taylor_series_1 = taylor(f, x, 'ExpansionPoint', 1, 'Order', 8);
+
+% Punkt środkowy x0=3, stopień n=10
+taylor_series_2 = taylor(f, x, 'ExpansionPoint', 3, 'Order', 11);
+
+disp('Szereg Taylora funkcji e^x w punkcie x0=1, stopień n=7:');
+disp(taylor_series_1);
+
+disp('Szereg Taylora funkcji e^x w punkcie x0=3, stopień n=10:');
+disp(taylor_series_2);
+
+% Obliczenie wartości funkcji w punkcie x=2
+value_at_2 = double(subs(taylor_series_2, x, 2));
+disp('Wartość szeregu Taylora w punkcie x=2:');
+disp(value_at_2);
+
+zad7
+% Rozwiązywanie symboliczne układów równań
+syms x y;
+eq1 = 4*x + 2*y == 6;
+eq2 = x + y == 2;
+
+% Rozwiązanie symboliczne
+solutions = solve([eq1, eq2], [x, y]);
+
+disp('Rozwiązanie układu równań:');
+disp('x =');
+disp(solutions.x);
+disp('y =');
+disp(solutions.y);
+
