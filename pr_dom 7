@@ -1,3 +1,5 @@
+zad1
+
 function zadanie1(f)
     while true
         n = input('Podaj liczbę naturalną n: ');
@@ -50,4 +52,53 @@ function lnat = czy_nat(n)
     else
         fprintf('nie jest nat');
     end
+end
+
+zad2
+
+function draw_function_and_tangent(f, a)
+    % Funkcja rysuje wykres funkcji f oraz styczną w punkcie x = a.
+    % Argumenty:
+    % f - funkcja symboliczna (np. f = @(x) x^2)
+    % a - punkt, w którym rysujemy styczną
+
+    % Konwersja funkcji symbolicznej na anonimową, jeśli potrzeba
+    if isa(f, 'sym')
+        f = matlabFunction(f);
+    end
+
+    % Obliczenie wartości funkcji w punkcie a
+    y_a = f(a);
+
+    % Obliczenie pochodnej funkcji
+    syms x;
+    f_sym = sym(f);
+    f_prime = diff(f_sym, x); % Pochodna funkcji
+    f_prime_num = matlabFunction(f_prime); % Pochodna jako funkcja numeryczna
+
+    % Obliczenie nachylenia stycznej w punkcie a
+    slope = f_prime_num(a);
+
+    % Równanie stycznej: y = slope * (x - a) + y_a
+    tangent_line = @(x) slope * (x - a) + y_a;
+
+    % Zakres dla wykresów
+    x_vals = linspace(a - 5, a + 5, 1000);
+    y_vals = f(x_vals);
+    tangent_vals = tangent_line(x_vals);
+
+    % Rysowanie wykresu funkcji i stycznej
+    figure;
+    hold on;
+    grid on;
+    plot(x_vals, y_vals, 'b', 'LineWidth', 2, 'DisplayName', 'Funkcja f');
+    plot(x_vals, tangent_vals, 'r--', 'LineWidth', 2, 'DisplayName', 'Styczna');
+    plot(a, y_a, 'ko', 'MarkerSize', 8, 'MarkerFaceColor', 'g', 'DisplayName', 'Punkt styczności');
+    
+    % Dodanie podpisów
+    title('Wykres funkcji i stycznej');
+    xlabel('x');
+    ylabel('y');
+    legend show;
+    hold off;
 end
