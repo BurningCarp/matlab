@@ -1,3 +1,72 @@
+zad1
+
+% Zadanie 1: Rozwiązanie równania różniczkowego
+clc;
+clear;
+close all;
+
+% Równanie: y' + 2y = y^2 * e^t
+% Zakres czasu
+tspan = [0, 5];
+
+% Warunki początkowe
+y0_values = -1:0.2:1;
+
+% Przygotowanie wykresu dla części (a)
+figure;
+hold on;
+grid on;
+title('Rozwiązania równania y'' + 2y = y^2 * e^t');
+xlabel('t');
+ylabel('y(t)');
+legend_entries = {}; % Do przechowywania legendy
+
+for y0 = y0_values
+    % Rozwiązanie numeryczne za pomocą ode45
+    [t, y] = ode45(@(t, y) y^2 * exp(t) - 2*y, tspan, y0);
+    plot(t, y, 'DisplayName', sprintf('y(0) = %.1f', y0));
+end
+legend show;
+
+% Część (b): Rozwiązanie analityczne i numeryczne dla y(0) = 0.5
+y0 = 0.5;
+
+% Rozwiązanie symboliczne
+syms y(t)
+ode = diff(y) + 2*y == y^2 * exp(t);
+cond = y(0) == y0;
+sol = dsolve(ode, cond);
+
+% Konwersja rozwiązania symbolicznego na funkcję anonimową
+y_analytic = matlabFunction(sol);
+
+% Rozwiązania numeryczne
+[t_ode23, y_ode23] = ode23(@(t, y) y^2 * exp(t) - 2*y, tspan, y0);
+[t_ode45, y_ode45] = ode45(@(t, y) y^2 * exp(t) - 2*y, tspan, y0);
+
+% Wykres porównawczy
+figure;
+hold on;
+grid on;
+title('Porównanie rozwiązań (analityczne i numeryczne)');
+xlabel('t');
+ylabel('y(t)');
+
+% Rozwiązanie analityczne
+fplot(y_analytic, tspan, 'r', 'DisplayName', 'Analityczne');
+
+% Rozwiązanie numeryczne ode23
+plot(t_ode23, y_ode23, 'b--', 'DisplayName', 'Numerical (ode23)');
+
+% Rozwiązanie numeryczne ode45
+plot(t_ode45, y_ode45, 'g-.', 'DisplayName', 'Numerical (ode45)');
+
+legend show;
+
+
+
+zad2
+
 numerycznie:
 t_span = [0, 10];
 N_0 = 100;
